@@ -45,5 +45,5 @@ FROM subjects_rn
 WHERE rn <= 3
 ORDER BY 1, rn;
 
--- индекс для оптимизации запроса №1
+-- индекс для оптимизации запроса №2
 CREATE INDEX idx_orders_subject_id_package_id ON orders(subject_id, package_id);

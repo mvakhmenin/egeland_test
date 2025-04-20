@@ -29,7 +29,7 @@ CREATE TABLE user_stats (
     followers INT,
     subscriptions INT,
     likes INT,
-    record_ts TIMESTAMP DEFAULT NOW(), -- !!! возможно стоит оставить только record_hour !!!
+    record_ts TIMESTAMP DEFAULT NOW(), 
     record_hour TIMESTAMP GENERATED ALWAYS AS (DATE_TRUNC('HOUR', record_ts)) STORED, -- вычисляемая колонка для проверки униальности по часам
     PRIMARY KEY (id, user_id), -- необходимо включить user_id, так как это ключ партиционирования
     CONSTRAINT user_id_uniq_record_hour UNIQUE(user_id, platform_id, record_hour)
